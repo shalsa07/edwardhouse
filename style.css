@@ -1,0 +1,129 @@
+body{
+  overflow: hidden;
+  margin: 0;
+  width: 100%;
+  height: 100%;
+}
+#webgl{
+  width: 100vw;
+  height: 100vh;
+}
+#title{
+  position: absolute;
+  margin: 0;
+  padding: 0;
+  top: 15px;
+  left: 50%;
+  transform: translateX(-50%);
+  font-size: 30px;
+  color: rgba(67, 67, 67, 0.566);
+}
+#btn_close{
+  display: none;
+  position: absolute;
+  margin: 0;
+  top: 0px;
+  right: 0px;
+  color:rgba(236, 236, 236, 0.759);
+  font-size: 50px;
+  /* border: 2px solid rgb(153, 153, 153); */
+}
+#btn_close:hover{
+  scale: 1.05;
+  color: rgba(66, 66, 66, 0.566);
+}
+#bottom_container{
+  display: flex;
+  justify-content: space-evenly;
+  align-items: center;
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%);
+  bottom: 5px;
+  width: auto;
+  height: 40px;
+  /* margin: 10px; */
+  border-radius: 30px;
+  background-color: rgba(34, 34, 34, 0.566);
+}
+#right_container{
+  display: flex;
+  flex-direction: column;
+  justify-content: space-evenly;
+  align-items: center;
+  position: absolute;
+  right: 5px;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 40px;
+  height: 70%;
+  /* margin: 10px; */
+  border-radius: 30px;
+  background-color: rgba(34, 34, 34, 0.566);
+}
+#loader {
+  position: absolute;
+  top: 10px;
+  left: 10px;
+  border: 5px solid #dadada68;
+  border-radius: 50%;
+  border-top: 5px solid #f3f3f3eb;
+  width: 30px;
+  height: 30px;
+  -webkit-animation: spin 2s linear infinite; /* Safari */
+  animation: spin 2s linear infinite;
+  z-index: 20;
+}
+
+.progress_counter{
+  position: absolute;
+  margin: 0;
+  /* width: 20px;
+  height: 20px; */
+  top: 30px;
+  left: 32px;
+  color: white;
+  font-size: 12px;
+}
+
+#progressBkgrd{
+  position: fixed;
+  top: 0;
+  left: 0;
+  /* transform: translate(-50% -50%); */
+  width: 100vw;
+  height: 100vh;
+  background-color: rgba(0, 0, 0, 0.834);
+  z-index: 20;
+}
+
+#progress_bar{
+  position: absolute;
+  left: 0;
+  top: 0npm run build;
+  width: 100%;
+  height: 2px;
+  background-color: white;
+  transform: scaleX(0);
+  transform-origin: top left;
+  z-index: 20;
+}
+
+.btns{
+  color: white;
+  margin-left: 40px;
+  margin-right: 40px;
+}
+
+.btns:hover{
+  color: rgba(136, 136, 136, 0.544);
+}
+/* Safari */
+@-webkit-keyframes spin {
+0% { -webkit-transform: rotate(0deg); }
+100% { -webkit-transform: rotate(360deg); }
+}
+@keyframes spin {
+0% { transform: rotate(0deg); }
+100% { transform: rotate(360deg); }
+}
