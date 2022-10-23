@@ -49,7 +49,7 @@ class ExtFilesArray{
             {
                 btnName:'views',
                 name:'zoom-extents',
-                pos:[-50,25,100,0]
+                pos:[100,35,100,0]
             }
         ]
 

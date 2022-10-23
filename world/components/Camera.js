@@ -5,7 +5,7 @@ class Camera{
         this.camera=new PerspectiveCamera(55,container.clientWidth/container.clientHeight,.001,2)
         scene.add(this.camera)
         
-        // console.log(this.camera)
+        // console.log(this.camera.position)
         return this.camera
     }
 }
