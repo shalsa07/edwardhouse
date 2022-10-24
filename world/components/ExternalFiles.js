@@ -5,7 +5,7 @@ class ExtFilesArray{
             envMap:'enviMap_512.hdr',
             scale:[1,0.05,0.025],
             names:['Edwards house'],
-            position:[8,0,-12,Math.PI],
+            position:[8,0,-12,3.14*2],
             gltfModel_furn:{
                 title:'furn',
                 levels:['opt_1_furn_1st'],
@@ -44,6 +44,35 @@ class ExtFilesArray{
             {
                 name:'top',
                 pos:[0,150,0,0]
+            }
+            ,
+            {
+                btnName:'views',
+                name:'zoom-extents',
+                pos:[100,35,100,0]
+            }
+        ]
+
+        this.modelPosElevation=[
+            {
+                name:'front',
+                pos:[-8,0,0,3.14,0]
+            },
+            {
+                name:'back',
+                pos:[8,0,0,0,-0.349066]
+            },
+            {
+                name:'left',
+                pos:[-15,0,0,1.5708,0]
+            },
+            {
+                name:'right',
+                pos:[10,0,0,-1.5708,-0.261799]
+            },
+            {
+                name:'top',
+                pos:[-8,15,10,3.14,-1.5708]
             }
             ,
             {
@@ -112,7 +141,7 @@ class ExtFilesArray{
         ]
 
         this.btns360sLow=[
-            ['360-1','360-2','360-3','360-4']
+            ['low/360-1','low/360-2','low/360-3','low/360-4']
             // ,
             // ['low/Option 2 3600001','low/Option 2 3600002','low/Option 2 3600003','low/Option 2 3600004','low/Option 2 3600005','low/Option 2 3600006']
             // ,

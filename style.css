@@ -63,13 +63,15 @@ body{
 }
 #loader {
   position: absolute;
-  top: 10px;
-  left: 10px;
+  top: 50%;
+  left: 50%;
+  transform-origin: 50% 50%;
+  translate: (-50% -50%);
   border: 5px solid #dadada68;
   border-radius: 50%;
   border-top: 5px solid #f3f3f3eb;
-  width: 30px;
-  height: 30px;
+  width: 50px;
+  height: 50px;
   -webkit-animation: spin 2s linear infinite; /* Safari */
   animation: spin 2s linear infinite;
   z-index: 20;

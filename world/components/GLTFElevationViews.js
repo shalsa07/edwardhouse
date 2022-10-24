@@ -1,9 +1,12 @@
+import gsap from 'gsap'
+
 class GLTFElevationViews{
     constructor(refArray,scene,loader,camera){
         this.refArray=refArray;
         this.scene=scene;
         this.loader=loader;
         this.camera=camera;
+        this.gsap=gsap
 
         this.objNameValue=0;
 
@@ -38,6 +41,84 @@ class GLTFElevationViews{
             }
         })
 
+    }
+
+    camViewsWithTween(viewObjList,btn){
+        /** */
+        btn.addEventListener('click',()=>{
+            const xMovment=viewObjList[this.objNameValue].pos[0]
+            const yMovment=viewObjList[this.objNameValue].pos[1]
+            const zMovment=viewObjList[this.objNameValue].pos[2]
+
+            for (let index = 0; index < viewObjList.length; index++) {
+                if(this.objNameValue<viewObjList.length-1){
+                    this.objNameValue++
+                    const cameraMovement=gsap.to(this.camera.position,
+                        {
+                            duration:1,
+                            x:xMovment,
+                            y:yMovment,
+                            z:zMovment,
+                            ease:"circ.out",
+                            onStart:()=>{
+                                document.querySelector('#progress').style.display='inline';
+                            },
+                            onComplete:()=>{
+                                document.querySelector('#progress').style.display='none';
+                            }
+                        }
+                    )
+                    return
+                }
+                this.objNameValue=-1
+            }
+        })
+    }
+
+    modelElevationMovementWithTween(obj,viewObjList,btn,controls){
+        /** */
+        btn.addEventListener('click',()=>{
+
+            controls.disbleControls()
+
+            this.camera.position.set(0,0,-1)
+
+            const easing="power1.out"
+            const duration=3
+            const xMovment=viewObjList[this.objNameValue].pos[0]/100
+            const yMovment=viewObjList[this.objNameValue].pos[1]/100
+            const zMovment=viewObjList[this.objNameValue].pos[2]/100
+            const radianXMovement=viewObjList[this.objNameValue].pos[3]
+            const radianYMovement=viewObjList[this.objNameValue].pos[4]
+
+            for (let index = 0; index < viewObjList.length; index++) {
+                if(this.objNameValue<viewObjList.length-1){
+                    this.objNameValue++
+                    gsap.to(obj.position,
+                        {
+                            duration:duration,
+                            x:xMovment,
+                            y:yMovment,
+                            z:zMovment,
+                            ease:easing,
+                        })
+                    gsap.to(obj.rotation,
+                        {
+                            duration:duration,
+                            y:radianXMovement,
+                            ease:easing,
+                        })
+                    gsap.to(obj.rotation,
+                        {
+                            duration:duration,
+                            x:radianYMovement,
+                            ease:easing,
+                        })
+                    return
+                }
+                this.objNameValue=-1
+            }
+        })
     }
 }
 export{GLTFElevationViews}

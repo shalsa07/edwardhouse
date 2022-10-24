@@ -7,6 +7,7 @@ class Controls{
     }
     controlsDefault(){
         // this.controls.autoRotate=true
+        this.controls.enabled=true
         this.controls.autoRotateSpeed=.1
         this.controls.enableDamping=true
         this.controls.enablePan=false
@@ -28,8 +29,8 @@ class Controls{
     }
     disbleControls(){
         this.controls.enabled=false
-        this.controls.autoRotate=false
-        this.controls.dispose()
+        // this.controls.autoRotate=false
+        // this.controls.dispose()
     }
     tick(){
         this.controls.update()
