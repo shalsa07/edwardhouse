@@ -27,7 +27,7 @@ class ExtFilesArray{
         this.camPosElevation=[
             {
                 name:'front',
-                pos:[0,3.5,50,0]
+                pos:[0,3.5,50,-6.28319]
             },
             {
                 name:'back',
@@ -59,12 +59,12 @@ class ExtFilesArray{
                 pos:[-8,0,0,3.14,0]
             },
             {
-                name:'back',
-                pos:[8,0,0,0,-0.349066]
-            },
-            {
                 name:'left',
                 pos:[-15,0,0,1.5708,0]
+            },
+            {
+                name:'back',
+                pos:[8,0,0,0,-0.349066]
             },
             {
                 name:'right',
@@ -72,7 +72,7 @@ class ExtFilesArray{
             },
             {
                 name:'top',
-                pos:[-8,15,10,3.14,-1.5708]
+                pos:[-8,15,10,-3.14,-1.5708]
             }
             ,
             {

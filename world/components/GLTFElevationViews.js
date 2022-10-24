@@ -50,9 +50,9 @@ class GLTFElevationViews{
             const yMovment=viewObjList[this.objNameValue].pos[1]
             const zMovment=viewObjList[this.objNameValue].pos[2]
 
+            this.objNameValue++
             for (let index = 0; index < viewObjList.length; index++) {
                 if(this.objNameValue<viewObjList.length-1){
-                    this.objNameValue++
                     const cameraMovement=gsap.to(this.camera.position,
                         {
                             duration:1,
@@ -70,53 +70,65 @@ class GLTFElevationViews{
                     )
                     return
                 }
-                this.objNameValue=-1
+                if(objNameValue>=objList.length-1){
+                    objNameValue=-1
+                    return objNameValue
+                }
+                // this.objNameValue=-1
             }
         })
     }
 
     modelElevationMovementWithTween(obj,viewObjList,btn,controls){
         /** */
+        let objNameValue=0-1;
         btn.addEventListener('click',()=>{
 
             controls.disbleControls()
 
             this.camera.position.set(0,0,-1)
 
+            objNameValue++
+
             const easing="power1.out"
             const duration=3
-            const xMovment=viewObjList[this.objNameValue].pos[0]/100
-            const yMovment=viewObjList[this.objNameValue].pos[1]/100
-            const zMovment=viewObjList[this.objNameValue].pos[2]/100
-            const radianXMovement=viewObjList[this.objNameValue].pos[3]
-            const radianYMovement=viewObjList[this.objNameValue].pos[4]
+            const xMovment=viewObjList[objNameValue].pos[0]/100
+            const yMovment=viewObjList[objNameValue].pos[1]/100
+            const zMovment=viewObjList[objNameValue].pos[2]/100
+            const radianXMovement=viewObjList[objNameValue].pos[3]
+            const radianYMovement=viewObjList[objNameValue].pos[4]
 
-            for (let index = 0; index < viewObjList.length; index++) {
-                if(this.objNameValue<viewObjList.length-1){
-                    this.objNameValue++
-                    gsap.to(obj.position,
-                        {
-                            duration:duration,
-                            x:xMovment,
-                            y:yMovment,
-                            z:zMovment,
-                            ease:easing,
-                        })
-                    gsap.to(obj.rotation,
-                        {
-                            duration:duration,
-                            y:radianXMovement,
-                            ease:easing,
-                        })
-                    gsap.to(obj.rotation,
-                        {
-                            duration:duration,
-                            x:radianYMovement,
-                            ease:easing,
-                        })
-                    return
-                }
-                this.objNameValue=-1
+            console.log(objNameValue);
+
+            gsap.to(obj.position,
+                {
+                    duration:duration,
+                    x:xMovment,
+                    y:yMovment,
+                    z:zMovment,
+                    ease:easing,
+                })
+            gsap.to(obj.rotation,
+                {
+                    duration:duration,
+                    y:radianXMovement,
+                    ease:easing,
+                })
+            gsap.to(obj.rotation,
+                {
+                    duration:duration,
+                    x:radianYMovement,
+                    ease:easing,
+                })
+            // for (let index = 0; index < viewObjList.length; index++) {
+            //     if(this.objNameValue<viewObjList.length-1){
+            //         return
+            //     }
+                // this.objNameValue=-1
+            // }
+            if(objNameValue>=viewObjList.length-2){
+                objNameValue=-1
+                return objNameValue
             }
         })
     }

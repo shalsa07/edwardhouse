@@ -59,18 +59,19 @@ class GltfManager{
          * model poistion
          */
          
-        this.gsapControls()
+        this.gsapControls("power1.out",3,this.radianYMovement)
 
         /**
          * home btn
          */
         const btnHome=document.querySelector(`#${refArray.uiSettings.wrapperBottomBtns[0].name}`)
         btnHome.addEventListener('click',()=>{
-            console.log('home btn clicked');
+            // console.log('home btn clicked');
             this.scene.getObjectByName('obj360Envi').visible=false
             this.scene.getObjectByName('model').visible=true
             this.controls.controlsDefault()
-            this.gsapControls()
+            this.modelPositioning.camDefaultView(this.refArray.camPosElevation,btnHome)
+            this.gsapControls("power1.out",3,this.radianYMovement)
         })
 
         /**
@@ -84,7 +85,7 @@ class GltfManager{
         /**
          * rm snap views
          */
-         const rmSnapBtn=document.querySelector(`#${this.refArray.uiSettings.wrapperRightBtns[0].name}`);
+        const rmSnapBtn=document.querySelector(`#${this.refArray.uiSettings.wrapperRightBtns[0].name}`);
         this.modelRmSnapCycle.rmSnapCycleWithGsapCycle(this.refArray.rmCamPosAndNames,rmSnapBtn)
 
         /**
@@ -97,7 +98,6 @@ class GltfManager{
          * share 
          */
         const shareBtn=document.querySelector(`#${this.refArray.uiSettings.wrapperRightBtns[2].name}`)
-
         this.shareFunction.shareContent(shareBtn)
         
 
@@ -131,9 +131,9 @@ class GltfManager{
         /** */
     }
 
-    gsapControls(){
-        const easing="power1.out"
-        const duration=3
+    gsapControls(easing,duration,radian){
+        // const easing="power1.out"
+        // const duration=1.5
 
         this.gsap.to(this.modelObj.position,{
             duration:duration,
@@ -144,7 +144,7 @@ class GltfManager{
         })
         this.gsap.to(this.modelObj.rotation,{
             duration:duration,
-            y:this.radianYMovement,
+            y:radian,
             ease:easing
         })
         this.gsap.to(this.modelObj.rotation,{
@@ -152,6 +152,7 @@ class GltfManager{
             x:this.radianXMovement,
             ease:easing
         })
+        // console.log(this.modelObj,this.camera);
     }
 }
 export {GltfManager}
